@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { loadDataFromApi } from 'api';
+import { loadDataFromApi } from 'api-mock';
 import { useEffect, useState } from 'react';
 
 const ApiComponent: React.FC = () => {

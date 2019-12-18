@@ -2,8 +2,9 @@ import * as API from 'api-mock';
 import * as React from 'react';
 import ApiComponent from 'components/ApiComponent';
 import { render, wait } from '@testing-library/react';
+import 'setupTests';
 
-jest.mock('API')
+jest.mock('api-mock')
 
 test('component test with api call', async () => {
   // @ts-ignore
