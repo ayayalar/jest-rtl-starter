@@ -1,14 +1,18 @@
+import * as API from 'api-mock';
 import * as React from 'react';
-import api from '../api';
-import MyComponentWithApiCall from '../MyComponentWithApiCall';
-import { render } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import '@testing-library/jest-dom/extend-expect';
+import ApiComponent from 'components/ApiComponent';
+import { render, wait } from '@testing-library/react';
 
-jest.mock("api");
+jest.mock('API')
 
-test("simple component test", () => {
-  const { getByText } = render(<MyComponentWithApiCall />);
-  const span = getByText(/MyComponentWithApiCall/i);
-  expect(span).toBeInTheDocument();
-});
+test('component test with api call', async () => {
+  // @ts-ignore
+  API.loadDataFromApi.mockResolvedValueOnce({
+    data: 'mock-data'
+  })
+  const { getByText, debug } = render(<ApiComponent />)
+  await wait(() => {
+    const span = getByText(/mock-data/i)
+    return expect(span).toBeInTheDocument()
+  })
+})
