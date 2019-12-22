@@ -16,4 +16,7 @@ test('component test with api call', async () => {
     const span = getByText(/mock-data/i)
     return expect(span).toBeInTheDocument()
   })
+
+  // @ts-ignore
+  expect(API.loadDataFromApi).toHaveBeenCalledTimes(1)
 })
