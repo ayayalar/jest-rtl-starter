@@ -1,4 +1,5 @@
 import thunk, { ThunkAction } from 'redux-thunk';
+import { getFormData } from 'api-mock';
 import {
   Action,
   ActionCreator,
@@ -62,33 +63,7 @@ export const LoadFormDemoActionCreator: ActionCreator<ThunkAction<
   return async (dispatch: Dispatch) => {
     return dispatch({
       type: 'LoadFormDemo',
-      formDemo: await Promise.resolve({
-        engagementId: '7-XRDMV12',
-        tpid: '7-LRDMV32',
-        customerName: 'John Doe',
-        partner: 'Microsoft',
-        requestTitle: 'Global Black Belt Request',
-        region: [
-          {
-            key: 'Americas',
-            value: 'Americas'
-          },
-          {
-            key: 'EMEA',
-            value: 'EMEA',
-            default: true
-          }
-        ],
-        area: 'NorthWest',
-        engagementDescription: 'Global Black Belt Request description.',
-        primaryTechnology: 'Azure',
-        additionalTechnology: 'Service Fabric',
-        technologyDescription: 'Microsoft Azure Services',
-        expectedStartDate: new Date(),
-        engagementDuration: '3 days',
-        deliveryMethod: 'Online',
-        additionalLocationDetails: 'None'
-      })
+      formDemo: await getFormData()
     } as ILoadFormDemoAction)
   }
 }
