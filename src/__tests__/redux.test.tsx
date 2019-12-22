@@ -20,8 +20,11 @@ test('redux connected component test', async () => {
     </Provider>
   )
 
-  return await wait(() => {
+  await wait(() => {
     debug()
     expect(getByText(/7-000000/i)).toBeInTheDocument()
   })
+
+  // @ts-ignore
+  expect(API.getFormData).toHaveBeenCalledTimes(1)
 })
